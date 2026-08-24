@@ -192,7 +192,7 @@ export function MainApp() {
         {/* Active Screen Container (Cached View Stacking for Instant 0ms Tab Switching) */}
         <View style={styles.screenContainer}>
           <View style={{ flex: 1, display: activeTab === 'Today' ? 'flex' : 'none' }}>
-            <TodayScreen />
+            <TodayScreen isActive={activeTab === 'Today'} />
           </View>
           <View style={{ flex: 1, display: activeTab === 'History' ? 'flex' : 'none' }}>
             <HistoryScreen />

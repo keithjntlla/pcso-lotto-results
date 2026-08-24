@@ -1,6 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 
+async function fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    return response;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 const RESULTS_PATH = path.join(__dirname, '..', 'data', 'results.json');
 
 const OFFICIAL_PCSO_URL = 'https://www.pcso.gov.ph/searchlottoresult.aspx';
@@ -78,13 +92,13 @@ function getManilaDateISO() {
  */
 async function fetchTodayFromLottoBalita(todayIso) {
   try {
-    const response = await fetch(`${TODAY_PRIMARY_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${TODAY_PRIMARY_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return null;
 
@@ -188,13 +202,13 @@ async function fetchTodayFromLottoBalita(todayIso) {
  */
 async function fetchTodayFromPhilNews(todayIso) {
   try {
-    const response = await fetch(`${TODAY_BACKUP_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${TODAY_BACKUP_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return null;
 
@@ -241,13 +255,13 @@ async function fetchTodayFromPhilNews(todayIso) {
  */
 async function fetchFromOfficialPCSO() {
   try {
-    const response = await fetch(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -314,11 +328,11 @@ async function fetchFromOfficialPCSO() {
  */
 async function fetchFromPrimary() {
   try {
-    const response = await fetch(PRIMARY_URL, {
+    const response = await fetchWithTimeout(PRIMARY_URL, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -364,11 +378,11 @@ async function fetchFromPrimary() {
  */
 async function fetchFromBackupSource() {
   try {
-    const response = await fetch(BACKUP_URL_1, {
+    const response = await fetchWithTimeout(BACKUP_URL_1, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -401,12 +415,12 @@ async function fetchFromBackupSource() {
  */
 async function fetchFromLottoBalitaHistory() {
   try {
-    const response = await fetch(`https://lottobalita.com/3d-lotto/history-and-summary/?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`https://lottobalita.com/3d-lotto/history-and-summary/?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -452,12 +466,12 @@ async function fetchFromLottoBalitaHistory() {
  */
 async function fetchFromLottoBalitaMainHistory() {
   try {
-    const response = await fetch(TODAY_PRIMARY_URL, {
+    const response = await fetchWithTimeout(TODAY_PRIMARY_URL, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -526,6 +540,119 @@ async function fetchLottoResults() {
 }
 
 /**
+ * On-Demand Targeted Date Scraper: Fetch official results for today's date directly from PCSO using POST
+ */
+async function fetchSpecificDateFromPCSO(targetDateStr) {
+  try {
+    const parts = targetDateStr.split('-');
+    const yearNum = parseInt(parts[0], 10);
+    const monthNum = parseInt(parts[1], 10);
+    const dayNum = parseInt(parts[2], 10);
+
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const monthName = monthNames[monthNum - 1];
+
+    if (!monthName || isNaN(yearNum) || isNaN(dayNum)) return null;
+
+    const getRes = await fetchWithTimeout(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept':
+          'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+    }, 5000);
+
+    if (!getRes.ok) return null;
+
+    const html = await getRes.text();
+    const vsMatch = html.match(/id="__VIEWSTATE" value="([^"]+)"/);
+    const vsgMatch = html.match(/id="__VIEWSTATEGENERATOR" value="([^"]+)"/);
+    const evMatch = html.match(/id="__EVENTVALIDATION" value="([^"]+)"/);
+
+    if (!vsMatch || !evMatch) return null;
+
+    const vs = encodeURIComponent(vsMatch[1]);
+    const vsg = vsgMatch ? encodeURIComponent(vsgMatch[1]) : '';
+    const ev = encodeURIComponent(evMatch[1]);
+
+    let bodyStr = `__VIEWSTATE=${vs}`;
+    if (vsg) bodyStr += `&__VIEWSTATEGENERATOR=${vsg}`;
+    bodyStr += `&__EVENTVALIDATION=${ev}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlSelectGame=0`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlStartMonth=${encodeURIComponent(monthName)}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlStartDate=${dayNum}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlStartYear=${yearNum}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlEndMonth=${encodeURIComponent(monthName)}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlEndDay=${dayNum}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlEndYear=${yearNum}`;
+    bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24btnSearch=Search+Lotto`;
+
+    const postRes = await fetchWithTimeout(OFFICIAL_PCSO_URL, {
+      method: 'POST',
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Referer': OFFICIAL_PCSO_URL,
+      },
+      body: bodyStr,
+    }, 6000);
+
+    if (!postRes.ok) return null;
+
+    const postHtml = await postRes.text();
+    const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+
+    let resultEntry = {
+      date: targetDateStr,
+      draw2pm: '--',
+      draw5pm: '--',
+      draw9pm: '--',
+    };
+
+    let match;
+    let found = false;
+
+    while ((match = rowRegex.exec(postHtml)) !== null) {
+      const rowHtml = match[1];
+      const cellRegex = /<td[^>]*>([\s\S]*?)<\/td>/gi;
+      const cells = [];
+      let cellMatch;
+
+      while ((cellMatch = cellRegex.exec(rowHtml)) !== null) {
+        cells.push(cellMatch[1].replace(/<[^>]+>/g, '').trim());
+      }
+
+      if (cells.length >= 3) {
+        const game = cells[0];
+        const combo = cells[1].trim().replace(/\s+/g, '');
+
+        const gameLower = game.toLowerCase();
+        if (gameLower.includes('3d lotto') || gameLower.includes('suertres') || gameLower.includes('swertres')) {
+          found = true;
+          if (game.includes('2PM') || game.includes('11AM')) {
+            resultEntry.draw2pm = combo;
+          } else if (game.includes('5PM') || game.includes('4PM')) {
+            resultEntry.draw5pm = combo;
+          } else if (game.includes('9PM')) {
+            resultEntry.draw9pm = combo;
+          }
+        }
+      }
+    }
+
+    return found ? resultEntry : null;
+  } catch (e) {
+    console.log('Scraper: Official PCSO targeted date fetch failed:', e.message || e);
+    return null;
+  }
+}
+
+/**
  * Today's live cascade
  */
 async function fetchTodayLiveResults(todayIso) {
@@ -534,6 +661,10 @@ async function fetchTodayLiveResults(todayIso) {
 
   console.log('Scraper: Today LottoBalita empty. Trying PhilNews backup...');
   todayRes = await fetchTodayFromPhilNews(todayIso);
+  if (todayRes) return todayRes;
+
+  console.log('Scraper: Today PhilNews empty. Trying Official PCSO targeted POST...');
+  todayRes = await fetchSpecificDateFromPCSO(todayIso);
   if (todayRes) return todayRes;
 
   return null;

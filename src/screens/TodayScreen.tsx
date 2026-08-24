@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   StyleSheet,
   View,
@@ -8,16 +8,19 @@ import {
   ActivityIndicator,
   ToastAndroid,
   Platform,
+  AppState,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import DrawCard from '../components/DrawCard';
 import { DrawResult, seedResults, formatLongDate } from '../data/seedData';
 import { getLocalResults, syncLottoResults, getTodayISO } from '../utils/storage';
 
-export default function TodayScreen() {
+export default function TodayScreen({ isActive = true }: { isActive?: boolean }) {
   const [results, setResults] = useState<DrawResult[]>(seedResults);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const lastSyncRef = useRef<number>(0);
 
   // Get today's date string formatted as YYYY-MM-DD in Philippine Standard Time
   const todayStr = getTodayISO();
@@ -31,12 +34,32 @@ export default function TodayScreen() {
   };
   const formattedLongDate = formatLongDate(todayStr);
 
+  // Reusable background sync handler with 5-minute throttling
+  const runBackgroundSync = useCallback(async (force = false) => {
+    const now = Date.now();
+    if (!force && now - lastSyncRef.current < 300000) {
+      console.log('TodayScreen: Sync throttled (last sync was < 5 mins ago)');
+      return;
+    }
+    console.log('TodayScreen: Running background sync...');
+    try {
+      const { results: synced } = await syncLottoResults();
+      if (synced && synced.length > 0) {
+        setResults(synced);
+        lastSyncRef.current = Date.now();
+      }
+    } catch (err) {
+      console.log('TodayScreen: Background sync failed', err);
+    }
+  }, []);
+
   // Manual pull-to-refresh
   const handleRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
       const { results: updatedResults, updatedCount } = await syncLottoResults();
       setResults(updatedResults);
+      lastSyncRef.current = Date.now(); // Update sync timestamp on manual refresh
 
       if (Platform.OS === 'android') {
         if (updatedCount > 0) {
@@ -73,13 +96,9 @@ export default function TodayScreen() {
 
       // 2. Non-blocking Background Sync (Fired asynchronously after 300ms so tab switching is 0ms instant)
       setTimeout(() => {
-        syncLottoResults()
-          .then(({ results: synced }) => {
-            if (isMounted && synced && synced.length > 0) {
-              setResults(synced);
-            }
-          })
-          .catch((err) => console.log('Background sync silent catch:', err));
+        if (isMounted) {
+          runBackgroundSync();
+        }
       }, 300);
     };
 
@@ -88,7 +107,31 @@ export default function TodayScreen() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [runBackgroundSync]);
+
+  // AppState foreground detection
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: string) => {
+      if (nextAppState === 'active') {
+        console.log('TodayScreen: App foregrounded. Syncing...');
+        runBackgroundSync();
+      }
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      subscription.remove();
+    };
+  }, [runBackgroundSync]);
+
+  // Tab focus detection
+  useEffect(() => {
+    if (isActive) {
+      console.log('TodayScreen: Tab active/focused. Syncing...');
+      runBackgroundSync();
+    }
+  }, [isActive, runBackgroundSync]);
 
   return (
     <View style={styles.container}>

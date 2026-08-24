@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DrawResult, seedResults } from '../data/seedData';
-import { fetchLottoResults, fetchSpecificDateFromPCSO, fetchTodayLiveResults } from './scraper';
+import { fetchLottoResults, fetchSpecificDateFromPCSO, fetchTodayLiveResults, fetchFromGitHubJSON } from './scraper';
 import { triggerDrawNotification } from './notifications';
 import { getMyTickets, saveMyTickets, checkTicketsAgainstResults } from './tickets';
 import { getTodayISO, getManilaHour } from './date';
@@ -165,12 +165,33 @@ export function mergeDrawResults(existing: DrawResult[], scraped: DrawResult[]):
 export async function syncLottoResults(): Promise<{ results: DrawResult[]; updatedCount: number }> {
   try {
     const local = await getLocalResults();
-    const scraped = await fetchLottoResults();
-
-    // Fetch Today's live results using targeted LottoBalita (primary) and PhilNews (backup)
     const todayStr = getTodayISO();
 
-    const todayLive = await fetchTodayLiveResults(todayStr);
+    let scraped: DrawResult[] = [];
+    let todayLive: DrawResult | null = null;
+
+    if (local.length > 10) {
+      // Fast path: We already have history cache. Fetch GitHub JSON and Today's Live in parallel.
+      console.log('Storage: Fast sync active. Bypassing heavy history HTML scraping.');
+      const [githubResults, liveRes] = await Promise.all([
+        fetchFromGitHubJSON().catch((err) => {
+          console.log('Storage: GitHub JSON fast-sync fetch failed:', err);
+          return [] as DrawResult[];
+        }),
+        fetchTodayLiveResults(todayStr).catch((err) => {
+          console.log('Storage: Today live fast-sync fetch failed:', err);
+          return null;
+        })
+      ]);
+      scraped = githubResults;
+      todayLive = liveRes;
+    } else {
+      // Cold-start path: Perform full multi-tier scrapes.
+      console.log('Storage: Cold-start sync active. Performing full multi-tier history scraping.');
+      scraped = await fetchLottoResults();
+      todayLive = await fetchTodayLiveResults(todayStr);
+    }
+
     if (todayLive) {
       scraped.unshift(todayLive);
     }

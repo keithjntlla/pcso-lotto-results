@@ -2,8 +2,10 @@ name: Scheduled Lotto Scraper
 
 on:
   schedule:
-    # Run every 20 minutes to capture 2PM, 5PM, and 9PM draws in real-time
-    - cron: '*/20 * * * *'
+    # Run every 5 minutes during 2 PM, 5 PM, and 9 PM Manila draw hours (6 AM, 9 AM, 1 PM UTC)
+    - cron: '*/5 6,9,13 * * *'
+    # Run once an hour during other hours as a fallback
+    - cron: '0 0-5,7-8,10-12,14-23 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:

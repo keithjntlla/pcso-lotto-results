@@ -7,6 +7,20 @@ const BACKUP_URL_1 = 'https://pcso-lotto-results.com/3d-swertres-result-history/
 const BACKUP_JSON_URL = 'https://raw.githubusercontent.com/pcso-results/3d-lotto/main/results.json';
 const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/keithjntlla/pcso-lotto-results/main/data/results.json';
 
+export async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 5000): Promise<Response> {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    return response;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 const TODAY_PRIMARY_URL = 'https://lottobalita.com/3d-lotto/';
 const TODAY_BACKUP_URL = 'https://philnews.ph/pcso-lotto-result/swertres-result/';
 
@@ -15,7 +29,7 @@ const TODAY_BACKUP_URL = 'https://philnews.ph/pcso-lotto-result/swertres-result/
  */
 export async function fetchFromGitHubJSON(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(`${GITHUB_JSON_URL}?t=${Date.now()}`);
+    const response = await fetchWithTimeout(`${GITHUB_JSON_URL}?t=${Date.now()}`);
     if (!response.ok) return [];
     const data = await response.json();
     if (Array.isArray(data)) {
@@ -80,13 +94,13 @@ function parseDrawCell(cellHtml: string): string {
  */
 export async function fetchTodayFromLottoBalita(todayIso: string): Promise<DrawResult | null> {
   try {
-    const response = await fetch(`${TODAY_PRIMARY_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${TODAY_PRIMARY_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return null;
 
@@ -190,13 +204,13 @@ export async function fetchTodayFromLottoBalita(todayIso: string): Promise<DrawR
  */
 export async function fetchTodayFromPhilNews(todayIso: string): Promise<DrawResult | null> {
   try {
-    const response = await fetch(`${TODAY_BACKUP_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${TODAY_BACKUP_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return null;
 
@@ -286,14 +300,14 @@ export async function fetchTodayLiveResults(todayIso: string): Promise<DrawResul
  */
 async function fetchFromOfficialPCSO(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept':
           'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -373,14 +387,14 @@ export async function fetchSpecificDateFromPCSO(targetDateStr: string): Promise<
 
     if (!monthName || isNaN(yearNum) || isNaN(dayNum)) return null;
 
-    const getRes = await fetch(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
+    const getRes = await fetchWithTimeout(`${OFFICIAL_PCSO_URL}?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept':
           'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       },
-    });
+    }, 5000);
 
     if (!getRes.ok) return null;
 
@@ -407,7 +421,7 @@ export async function fetchSpecificDateFromPCSO(targetDateStr: string): Promise<
     bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24ddlEndYear=${yearNum}`;
     bodyStr += `&ctl00%24ctl00%24cphContainer%24cpContent%24btnSearch=Search+Lotto`;
 
-    const postRes = await fetch(OFFICIAL_PCSO_URL, {
+    const postRes = await fetchWithTimeout(OFFICIAL_PCSO_URL, {
       method: 'POST',
       headers: {
         'User-Agent':
@@ -416,7 +430,7 @@ export async function fetchSpecificDateFromPCSO(targetDateStr: string): Promise<
         'Referer': OFFICIAL_PCSO_URL,
       },
       body: bodyStr,
-    });
+    }, 6000);
 
     if (!postRes.ok) return null;
 
@@ -474,11 +488,11 @@ export async function fetchSpecificDateFromPCSO(targetDateStr: string): Promise<
  */
 async function fetchFromPrimary(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(PRIMARY_URL, {
+    const response = await fetchWithTimeout(PRIMARY_URL, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -524,11 +538,11 @@ async function fetchFromPrimary(): Promise<DrawResult[]> {
  */
 async function fetchFromBackupSource(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(BACKUP_URL_1, {
+    const response = await fetchWithTimeout(BACKUP_URL_1, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -561,7 +575,7 @@ async function fetchFromBackupSource(): Promise<DrawResult[]> {
  */
 async function fetchFromJSONFallback(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(BACKUP_JSON_URL);
+    const response = await fetchWithTimeout(BACKUP_JSON_URL);
     if (!response.ok) return [];
     const data = await response.json();
     if (Array.isArray(data)) {
@@ -579,12 +593,12 @@ async function fetchFromJSONFallback(): Promise<DrawResult[]> {
  */
 async function fetchFromLottoBalitaHistory(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(`https://lottobalita.com/3d-lotto/history-and-summary/?t=${Date.now()}`, {
+    const response = await fetchWithTimeout(`https://lottobalita.com/3d-lotto/history-and-summary/?t=${Date.now()}`, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
@@ -631,12 +645,12 @@ async function fetchFromLottoBalitaHistory(): Promise<DrawResult[]> {
  */
 async function fetchFromLottoBalitaMainHistory(): Promise<DrawResult[]> {
   try {
-    const response = await fetch(TODAY_PRIMARY_URL, {
+    const response = await fetchWithTimeout(TODAY_PRIMARY_URL, {
       headers: {
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-    });
+    }, 5000);
 
     if (!response.ok) return [];
 
