@@ -1,38 +1,38 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T15:58:05.578Z",
+  "generatedAt": "2026-11-21T21:35:41.901Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-07",
-      "lastCheckedDate": "2016-01-06"
+      "nextDate": "2016-01-08",
+      "lastCheckedDate": "2016-01-07"
     },
     "lastRun": [
       {
-        "start": "2026-11-15",
-        "end": "2026-11-21",
+        "start": "2026-11-16",
+        "end": "2026-11-22",
         "kind": "recent",
-        "checkedAt": "2026-11-21T15:58:05.578Z",
+        "checkedAt": "2026-11-21T21:35:41.901Z",
         "status": "unavailable",
         "drawCount": 0
       },
       {
-        "start": "2016-01-06",
-        "end": "2016-01-06",
+        "start": "2016-01-07",
+        "end": "2016-01-07",
         "kind": "backfill",
-        "checkedAt": "2026-11-21T15:58:05.578Z",
+        "checkedAt": "2026-11-21T21:35:41.901Z",
         "status": "unavailable",
         "drawCount": 0
       },
       {
         "provider": "https://lottobalita.com/3d-lotto/",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "status": "success",
         "drawCount": 0
       },
       {
         "provider": "https://lottobalita.com/2d-lotto/",
-        "date": "2026-11-21",
+        "date": "2026-11-22",
         "status": "success",
         "drawCount": 0
       }
@@ -800,110 +800,6 @@
       "provider": "PCSO",
       "observedAt": "2026-11-21T06:41:07.401Z",
       "revision": "67bd213e1dc526602fee4768"
-    },
-    {
-      "gameId": "2d",
-      "date": "2026-11-15",
-      "drawTime": "2PM",
-      "combination": "09-06",
-      "jackpotCentavos": null,
-      "winners": 380,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "e9c6a47d087b6d435e30a2cf"
-    },
-    {
-      "gameId": "2d",
-      "date": "2026-11-15",
-      "drawTime": "5PM",
-      "combination": "29-07",
-      "jackpotCentavos": null,
-      "winners": 207,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "142f72c4d8f5b85d976fe66f"
-    },
-    {
-      "gameId": "2d",
-      "date": "2026-11-15",
-      "drawTime": "9PM",
-      "combination": "08-27",
-      "jackpotCentavos": null,
-      "winners": 565,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "0bb6641b45d978779fef03f3"
-    },
-    {
-      "gameId": "3d",
-      "date": "2026-11-15",
-      "drawTime": "2PM",
-      "combination": "7-9-5",
-      "jackpotCentavos": null,
-      "winners": 93,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "1c7301a6536acb12673974d5"
-    },
-    {
-      "gameId": "3d",
-      "date": "2026-11-15",
-      "drawTime": "5PM",
-      "combination": "5-2-8",
-      "jackpotCentavos": null,
-      "winners": 486,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "6dbe3ed2fb70e31a5644e964"
-    },
-    {
-      "gameId": "3d",
-      "date": "2026-11-15",
-      "drawTime": "9PM",
-      "combination": "4-4-8",
-      "jackpotCentavos": null,
-      "winners": 239,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "f7a5e355c5767ccb83926844"
-    },
-    {
-      "gameId": "649",
-      "date": "2026-11-15",
-      "drawTime": "9PM",
-      "combination": "49-16-18-27-02-15",
-      "jackpotCentavos": 10918046129,
-      "winners": 0,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "b439e23e5007a6c8aef333e3"
-    },
-    {
-      "gameId": "658",
-      "date": "2026-11-15",
-      "drawTime": "9PM",
-      "combination": "26-33-18-46-15-14",
-      "jackpotCentavos": 53791361081,
-      "winners": 0,
-      "confirmation": "OfficialConfirmed",
-      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
-      "provider": "PCSO",
-      "observedAt": "2026-11-21T06:41:07.401Z",
-      "revision": "b50ed321c42339093494bbf1"
     }
   ]
 }
