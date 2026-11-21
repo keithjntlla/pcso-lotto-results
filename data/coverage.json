@@ -9,6 +9,26 @@
       "start": "2026-11-15",
       "end": "2026-11-21",
       "kind": "recent",
+      "checkedAt": "2026-11-21T06:58:22.465Z",
+      "status": "success",
+      "drawCount": 54
+    },
+    {
+      "provider": "https://lottobalita.com/3d-lotto/",
+      "date": "2026-11-21",
+      "status": "success",
+      "drawCount": 0
+    },
+    {
+      "provider": "https://lottobalita.com/2d-lotto/",
+      "date": "2026-11-21",
+      "status": "success",
+      "drawCount": 0
+    },
+    {
+      "start": "2026-11-15",
+      "end": "2026-11-21",
+      "kind": "recent",
       "checkedAt": "2026-11-21T06:44:55.178Z",
       "status": "success",
       "drawCount": 54
@@ -154,7 +174,7 @@
       "error": "fetch failed"
     }
   ],
-  "updatedAt": "2026-11-21T06:44:55.178Z",
+  "updatedAt": "2026-11-21T06:58:22.465Z",
   "unavailableRanges": [
     {
       "start": "2016-01-01",
