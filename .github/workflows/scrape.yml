@@ -1,40 +1,62 @@
-name: Scheduled Lotto Scraper
-
+name: Reliable Lotto Feeds
 on:
   schedule:
-    # Run every 5 minutes during 2 PM, 5 PM, and 9 PM Manila draw hours (6 AM, 9 AM, 1 PM UTC)
-    - cron: '*/5 6,9,13 * * *'
-    # Run once an hour during other hours as a fallback
-    - cron: '0 0-5,7-8,10-12,14-23 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI
-
+    # Manila 14:00–15:55,17:00–18:55,21:00–22:55 (UTC+8).
+    - cron: "*/5 6-7,9-10,13-14 * * *"
+    - cron: "0 0-5,8,11-12,15-23 * * *"
+  workflow_dispatch:
+    inputs:
+      backfill_days:
+        description: "Bounded historical days to check (0–31); persisted cursor starts 2016-01-01"
+        default: "7"
+      from:
+        description: "Optional official recovery start yyyy-MM-dd"
+        required: false
+      to:
+        description: "Optional official recovery end yyyy-MM-dd"
+        required: false
+concurrency:
+  group: results-feed-writer
+  cancel-in-progress: false
+permissions:
+  contents: write
 jobs:
   scrape:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write # Required to push results back to the repository
-
+    timeout-minutes: 20
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
         with:
-          node-version: 20
-
-      - name: Run Scraper
-        run: node scripts/scrape.js
-
-      - name: Commit and Push Results
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Parser and integrity tests
+        run: node --test scripts/updater/*.test.js
+      - name: Update feeds serially
+        id: update
+        continue-on-error: true
+        env:
+          BACKFILL_DAYS: ${{ inputs.backfill_days || '1' }}
+          RECOVERY_FROM: ${{ inputs.from }}
+          RECOVERY_TO: ${{ inputs.to }}
+        shell: bash
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/results.json
-          if git diff --cached --quiet; then
-            echo "No changes in results.json"
-          else
-            git commit -m "chore: update lotto results [skip ci]"
-            git push origin HEAD:${{ github.ref }}
+          args=(--backfill-days "$BACKFILL_DAYS")
+          if [[ -n "$RECOVERY_FROM" ]]; then args+=(--from "$RECOVERY_FROM"); fi
+          if [[ -n "$RECOVERY_TO" ]]; then args+=(--to "$RECOVERY_TO"); fi
+          node scripts/scrape.js "${args[@]}"
+      - name: Validate generated feeds
+        run: node scripts/updater/validate.js
+      - name: Commit all feeds and coverage, including failure diagnostics
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: update verified lotto feeds and coverage [skip ci]'
+            git push origin HEAD:main
           fi
+      - name: Report official outage
+        if: steps.update.outcome == 'failure'
+        run: exit 1
