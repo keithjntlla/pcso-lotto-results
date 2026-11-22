@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T21:35:41.901Z",
+  "generatedAt": "2026-11-22T01:57:41.874Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-08",
-      "lastCheckedDate": "2016-01-07"
+      "nextDate": "2016-01-09",
+      "lastCheckedDate": "2016-01-08"
     },
     "lastRun": [
       {
         "start": "2026-11-16",
         "end": "2026-11-22",
         "kind": "recent",
-        "checkedAt": "2026-11-21T21:35:41.901Z",
+        "checkedAt": "2026-11-22T01:57:41.874Z",
         "status": "unavailable",
         "drawCount": 0
       },
       {
-        "start": "2016-01-07",
-        "end": "2016-01-07",
+        "start": "2016-01-08",
+        "end": "2016-01-08",
         "kind": "backfill",
-        "checkedAt": "2026-11-21T21:35:41.901Z",
+        "checkedAt": "2026-11-22T01:57:41.874Z",
         "status": "unavailable",
         "drawCount": 0
       },
