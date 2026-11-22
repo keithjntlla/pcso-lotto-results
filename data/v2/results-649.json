@@ -1,40 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-22T09:39:07.497Z",
+  "generatedAt": "2026-11-22T13:53:02.810Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-10",
-      "lastCheckedDate": "2016-01-09"
+      "nextDate": "2016-01-11",
+      "lastCheckedDate": "2016-01-10"
     },
     "lastRun": [
       {
         "start": "2026-11-16",
         "end": "2026-11-22",
         "kind": "recent",
-        "checkedAt": "2026-11-22T09:39:07.497Z",
+        "checkedAt": "2026-11-22T13:53:02.810Z",
         "status": "success",
-        "drawCount": 55
+        "drawCount": 63
       },
       {
-        "start": "2016-01-09",
-        "end": "2016-01-09",
+        "start": "2016-01-10",
+        "end": "2016-01-10",
         "kind": "backfill",
-        "checkedAt": "2026-11-22T09:39:07.497Z",
+        "checkedAt": "2026-11-22T13:53:02.810Z",
         "status": "success",
-        "drawCount": 9
-      },
-      {
-        "provider": "https://lottobalita.com/3d-lotto/",
-        "date": "2026-11-22",
-        "status": "success",
-        "drawCount": 0
-      },
-      {
-        "provider": "https://lottobalita.com/2d-lotto/",
-        "date": "2026-11-22",
-        "status": "success",
-        "drawCount": 0
+        "drawCount": 8
       }
     ],
     "counts": {
@@ -49,9 +37,9 @@
         "OfficialConfirmed": 4
       },
       "649": {
-        "LegacyUnverified": 1588,
+        "LegacyUnverified": 1587,
         "Provisional": 0,
-        "OfficialConfirmed": 5
+        "OfficialConfirmed": 7
       },
       "655": {
         "LegacyUnverified": 1594,
@@ -59,19 +47,19 @@
         "OfficialConfirmed": 6
       },
       "658": {
-        "LegacyUnverified": 1530,
+        "LegacyUnverified": 1529,
         "Provisional": 0,
-        "OfficialConfirmed": 4
+        "OfficialConfirmed": 6
       },
       "3d": {
-        "LegacyUnverified": 11256,
+        "LegacyUnverified": 11253,
         "Provisional": 0,
-        "OfficialConfirmed": 36
+        "OfficialConfirmed": 42
       },
       "2d": {
-        "LegacyUnverified": 11029,
+        "LegacyUnverified": 11026,
         "Provisional": 0,
-        "OfficialConfirmed": 36
+        "OfficialConfirmed": 42
       },
       "4d": {
         "LegacyUnverified": 1531,
@@ -86,6 +74,19 @@
     }
   },
   "draws": [
+    {
+      "gameId": "649",
+      "date": "2026-11-22",
+      "drawTime": "9PM",
+      "combination": "12-38-29-25-44-39",
+      "jackpotCentavos": 12680524084,
+      "winners": 0,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-22T13:53:04.786Z",
+      "revision": "d68ec46fcd67b060f965934b"
+    },
     {
       "gameId": "649",
       "date": "2026-11-19",
@@ -20748,13 +20749,13 @@
       "date": "2016-01-10",
       "drawTime": "9PM",
       "combination": "08-48-39-38-13-36",
-      "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results#android-asset-seed-649",
-      "provider": "Android asset snapshot",
-      "observedAt": "2026-11-21T06:40:55.202Z",
-      "revision": "0f32210c2145efbb84a6011b"
+      "jackpotCentavos": 3961576400,
+      "winners": 0,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-22T13:53:05.672Z",
+      "revision": "bbb1f721d2ec4cca5072eb22"
     },
     {
       "gameId": "649",
