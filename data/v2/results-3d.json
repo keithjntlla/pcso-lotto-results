@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-22T18:20:02.040Z",
+  "generatedAt": "2026-11-22T20:30:05.270Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-12",
-      "lastCheckedDate": "2016-01-11"
+      "nextDate": "2016-01-13",
+      "lastCheckedDate": "2016-01-12"
     },
     "lastRun": [
       {
         "start": "2026-11-17",
         "end": "2026-11-23",
         "kind": "recent",
-        "checkedAt": "2026-11-22T18:20:02.040Z",
+        "checkedAt": "2026-11-22T20:30:05.270Z",
         "status": "success",
         "drawCount": 54
       },
       {
-        "start": "2016-01-11",
-        "end": "2016-01-11",
+        "start": "2016-01-12",
+        "end": "2016-01-12",
         "kind": "backfill",
-        "checkedAt": "2026-11-22T18:20:02.040Z",
+        "checkedAt": "2026-11-22T20:30:05.270Z",
         "status": "success",
         "drawCount": 9
       },
@@ -39,9 +39,9 @@
     ],
     "counts": {
       "642": {
-        "LegacyUnverified": 1586,
+        "LegacyUnverified": 1585,
         "Provisional": 0,
-        "OfficialConfirmed": 6
+        "OfficialConfirmed": 7
       },
       "645": {
         "LegacyUnverified": 1594,
@@ -49,9 +49,9 @@
         "OfficialConfirmed": 5
       },
       "649": {
-        "LegacyUnverified": 1587,
+        "LegacyUnverified": 1586,
         "Provisional": 0,
-        "OfficialConfirmed": 7
+        "OfficialConfirmed": 8
       },
       "655": {
         "LegacyUnverified": 1593,
@@ -64,14 +64,14 @@
         "OfficialConfirmed": 6
       },
       "3d": {
-        "LegacyUnverified": 11250,
+        "LegacyUnverified": 11247,
         "Provisional": 0,
-        "OfficialConfirmed": 45
+        "OfficialConfirmed": 48
       },
       "2d": {
-        "LegacyUnverified": 11023,
+        "LegacyUnverified": 11020,
         "Provisional": 0,
-        "OfficialConfirmed": 45
+        "OfficialConfirmed": 48
       },
       "4d": {
         "LegacyUnverified": 1530,
@@ -79,9 +79,9 @@
         "OfficialConfirmed": 5
       },
       "6d": {
-        "LegacyUnverified": 1520,
+        "LegacyUnverified": 1519,
         "Provisional": 0,
-        "OfficialConfirmed": 6
+        "OfficialConfirmed": 7
       }
     }
   },
@@ -146498,12 +146498,12 @@
       "drawTime": "2PM",
       "combination": "7-9-7",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "591fde03ddcf863742e4866e"
+      "winners": 384,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-22T20:30:08.312Z",
+      "revision": "122fb3c3b9865f5045594953"
     },
     {
       "gameId": "3d",
@@ -146511,12 +146511,12 @@
       "drawTime": "5PM",
       "combination": "8-1-7",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "708a479d8635e443950b5184"
+      "winners": 807,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-22T20:30:08.312Z",
+      "revision": "68bbbdf4abd8acb796978dd8"
     },
     {
       "gameId": "3d",
@@ -146524,12 +146524,12 @@
       "drawTime": "9PM",
       "combination": "4-5-4",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "ed41f977c8086c724ec92834"
+      "winners": 490,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-22T20:30:08.312Z",
+      "revision": "2514a251c5b55b44621bffe6"
     },
     {
       "gameId": "3d",
