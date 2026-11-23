@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-23T17:01:49.794Z",
+  "generatedAt": "2026-11-23T22:29:13.739Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-16",
-      "lastCheckedDate": "2016-01-15"
+      "nextDate": "2016-01-17",
+      "lastCheckedDate": "2016-01-16"
     },
     "lastRun": [
       {
         "start": "2026-11-18",
         "end": "2026-11-24",
         "kind": "recent",
-        "checkedAt": "2026-11-23T17:01:49.794Z",
+        "checkedAt": "2026-11-23T22:29:13.739Z",
         "status": "success",
         "drawCount": 53
       },
       {
-        "start": "2016-01-15",
-        "end": "2016-01-15",
+        "start": "2016-01-16",
+        "end": "2016-01-16",
         "kind": "backfill",
-        "checkedAt": "2026-11-23T17:01:49.794Z",
+        "checkedAt": "2026-11-23T22:29:13.739Z",
         "status": "success",
         "drawCount": 9
       },
@@ -39,9 +39,9 @@
     ],
     "counts": {
       "642": {
-        "LegacyUnverified": 1584,
+        "LegacyUnverified": 1583,
         "Provisional": 0,
-        "OfficialConfirmed": 8
+        "OfficialConfirmed": 9
       },
       "645": {
         "LegacyUnverified": 1592,
@@ -54,9 +54,9 @@
         "OfficialConfirmed": 9
       },
       "655": {
-        "LegacyUnverified": 1592,
+        "LegacyUnverified": 1591,
         "Provisional": 0,
-        "OfficialConfirmed": 9
+        "OfficialConfirmed": 10
       },
       "658": {
         "LegacyUnverified": 1528,
@@ -64,14 +64,14 @@
         "OfficialConfirmed": 7
       },
       "3d": {
-        "LegacyUnverified": 11238,
+        "LegacyUnverified": 11235,
         "Provisional": 0,
-        "OfficialConfirmed": 60
+        "OfficialConfirmed": 63
       },
       "2d": {
-        "LegacyUnverified": 11011,
+        "LegacyUnverified": 11008,
         "Provisional": 0,
-        "OfficialConfirmed": 60
+        "OfficialConfirmed": 63
       },
       "4d": {
         "LegacyUnverified": 1528,
@@ -79,9 +79,9 @@
         "OfficialConfirmed": 8
       },
       "6d": {
-        "LegacyUnverified": 1518,
+        "LegacyUnverified": 1517,
         "Provisional": 0,
-        "OfficialConfirmed": 8
+        "OfficialConfirmed": 9
       }
     }
   },
@@ -19839,12 +19839,12 @@
       "drawTime": "9PM",
       "combination": "5-1-6-8-8-4",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results#android-asset-seed-6d",
-      "provider": "Android asset snapshot",
-      "observedAt": "2026-11-21T06:40:55.158Z",
-      "revision": "d64a980fbccd24fa4c6cb82c"
+      "winners": 0,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-23T22:29:16.040Z",
+      "revision": "bfd84f238077aa4c03352ccb"
     },
     {
       "gameId": "6d",
