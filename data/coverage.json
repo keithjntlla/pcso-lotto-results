@@ -1,10 +1,38 @@
 {
   "schemaVersion": 1,
   "backfill": {
-    "nextDate": "2016-01-26",
-    "lastCheckedDate": "2016-01-25"
+    "nextDate": "2016-01-27",
+    "lastCheckedDate": "2016-01-26"
   },
   "queries": [
+    {
+      "start": "2026-11-21",
+      "end": "2026-11-27",
+      "kind": "recent",
+      "checkedAt": "2026-11-26T18:14:23.866Z",
+      "status": "success",
+      "drawCount": 54
+    },
+    {
+      "start": "2016-01-26",
+      "end": "2016-01-26",
+      "kind": "backfill",
+      "checkedAt": "2026-11-26T18:14:23.866Z",
+      "status": "success",
+      "drawCount": 9
+    },
+    {
+      "provider": "https://lottobalita.com/3d-lotto/",
+      "date": "2026-11-27",
+      "status": "success",
+      "drawCount": 0
+    },
+    {
+      "provider": "https://lottobalita.com/2d-lotto/",
+      "date": "2026-11-27",
+      "status": "success",
+      "drawCount": 0
+    },
     {
       "start": "2026-11-21",
       "end": "2026-11-27",
@@ -684,37 +712,9 @@
       "checkedAt": "2026-11-21T06:41:06.503Z",
       "status": "failed",
       "error": "Official results grid/columns missing"
-    },
-    {
-      "provider": "https://lottobalita.com/3d-lotto/",
-      "date": "2026-11-21",
-      "status": "failed",
-      "error": "fetch failed"
-    },
-    {
-      "provider": "https://lottobalita.com/2d-lotto/",
-      "date": "2026-11-21",
-      "status": "failed",
-      "error": "fetch failed"
-    },
-    {
-      "start": "2026-11-15",
-      "end": "2026-11-21",
-      "kind": "recent",
-      "checkedAt": "2026-11-21T06:40:54.930Z",
-      "status": "failed",
-      "error": "HTTP 403 https://www.pcso.gov.ph/searchlottoresult.aspx"
-    },
-    {
-      "start": "2016-01-01",
-      "end": "2016-01-01",
-      "kind": "backfill",
-      "checkedAt": "2026-11-21T06:40:54.930Z",
-      "status": "failed",
-      "error": "HTTP 403 https://www.pcso.gov.ph/searchlottoresult.aspx"
     }
   ],
-  "updatedAt": "2026-11-26T16:10:15.531Z",
+  "updatedAt": "2026-11-26T18:14:23.866Z",
   "unavailableRanges": [
     {
       "start": "2016-01-01",
