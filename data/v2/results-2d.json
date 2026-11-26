@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T23:29:37.800Z",
+  "generatedAt": "2026-11-26T07:29:49.634Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-24",
-      "lastCheckedDate": "2016-01-23"
+      "nextDate": "2016-01-25",
+      "lastCheckedDate": "2016-01-24"
     },
     "lastRun": [
       {
         "start": "2026-11-20",
         "end": "2026-11-26",
         "kind": "recent",
-        "checkedAt": "2026-11-25T23:29:37.800Z",
+        "checkedAt": "2026-11-26T07:29:49.634Z",
         "status": "success",
         "drawCount": 54
       },
       {
-        "start": "2016-01-23",
-        "end": "2016-01-23",
+        "start": "2016-01-24",
+        "end": "2016-01-24",
         "kind": "backfill",
-        "checkedAt": "2026-11-25T23:29:37.800Z",
+        "checkedAt": "2026-11-26T07:29:49.634Z",
         "status": "success",
-        "drawCount": 9
+        "drawCount": 8
       },
       {
         "provider": "https://lottobalita.com/3d-lotto/",
@@ -49,9 +49,9 @@
         "OfficialConfirmed": 12
       },
       "649": {
-        "LegacyUnverified": 1582,
+        "LegacyUnverified": 1581,
         "Provisional": 0,
-        "OfficialConfirmed": 13
+        "OfficialConfirmed": 14
       },
       "655": {
         "LegacyUnverified": 1588,
@@ -59,19 +59,19 @@
         "OfficialConfirmed": 14
       },
       "658": {
-        "LegacyUnverified": 1526,
+        "LegacyUnverified": 1525,
         "Provisional": 0,
-        "OfficialConfirmed": 10
+        "OfficialConfirmed": 11
       },
       "3d": {
-        "LegacyUnverified": 11214,
+        "LegacyUnverified": 11211,
         "Provisional": 0,
-        "OfficialConfirmed": 90
+        "OfficialConfirmed": 93
       },
       "2d": {
-        "LegacyUnverified": 10987,
+        "LegacyUnverified": 10984,
         "Provisional": 0,
-        "OfficialConfirmed": 90
+        "OfficialConfirmed": 93
       },
       "4d": {
         "LegacyUnverified": 1525,
@@ -143196,12 +143196,12 @@
       "drawTime": "2PM",
       "combination": "03-06",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results#android-asset-seed-2d",
-      "provider": "Android asset snapshot",
-      "observedAt": "2026-11-21T06:40:55.128Z",
-      "revision": "ccbbf75ef3dbe2115e0297bb"
+      "winners": 257,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "a03d0ba400e15fb5ca989ca9"
     },
     {
       "gameId": "2d",
@@ -143209,12 +143209,12 @@
       "drawTime": "5PM",
       "combination": "09-10",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results#android-asset-seed-2d",
-      "provider": "Android asset snapshot",
-      "observedAt": "2026-11-21T06:40:55.128Z",
-      "revision": "282a1f70bd630d1c72803a7f"
+      "winners": 257,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "01e37938ab901d33957ff8bb"
     },
     {
       "gameId": "2d",
@@ -143222,12 +143222,12 @@
       "drawTime": "9PM",
       "combination": "10-23",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results#android-asset-seed-2d",
-      "provider": "Android asset snapshot",
-      "observedAt": "2026-11-21T06:40:55.128Z",
-      "revision": "e318f70d937cf1aae91b94f6"
+      "winners": 627,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "a18968a1c26515d17d1c6465"
     },
     {
       "gameId": "2d",

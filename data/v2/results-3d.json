@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T23:29:37.800Z",
+  "generatedAt": "2026-11-26T07:29:49.634Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-24",
-      "lastCheckedDate": "2016-01-23"
+      "nextDate": "2016-01-25",
+      "lastCheckedDate": "2016-01-24"
     },
     "lastRun": [
       {
         "start": "2026-11-20",
         "end": "2026-11-26",
         "kind": "recent",
-        "checkedAt": "2026-11-25T23:29:37.800Z",
+        "checkedAt": "2026-11-26T07:29:49.634Z",
         "status": "success",
         "drawCount": 54
       },
       {
-        "start": "2016-01-23",
-        "end": "2016-01-23",
+        "start": "2016-01-24",
+        "end": "2016-01-24",
         "kind": "backfill",
-        "checkedAt": "2026-11-25T23:29:37.800Z",
+        "checkedAt": "2026-11-26T07:29:49.634Z",
         "status": "success",
-        "drawCount": 9
+        "drawCount": 8
       },
       {
         "provider": "https://lottobalita.com/3d-lotto/",
@@ -49,9 +49,9 @@
         "OfficialConfirmed": 12
       },
       "649": {
-        "LegacyUnverified": 1582,
+        "LegacyUnverified": 1581,
         "Provisional": 0,
-        "OfficialConfirmed": 13
+        "OfficialConfirmed": 14
       },
       "655": {
         "LegacyUnverified": 1588,
@@ -59,19 +59,19 @@
         "OfficialConfirmed": 14
       },
       "658": {
-        "LegacyUnverified": 1526,
+        "LegacyUnverified": 1525,
         "Provisional": 0,
-        "OfficialConfirmed": 10
+        "OfficialConfirmed": 11
       },
       "3d": {
-        "LegacyUnverified": 11214,
+        "LegacyUnverified": 11211,
         "Provisional": 0,
-        "OfficialConfirmed": 90
+        "OfficialConfirmed": 93
       },
       "2d": {
-        "LegacyUnverified": 10987,
+        "LegacyUnverified": 10984,
         "Provisional": 0,
-        "OfficialConfirmed": 90
+        "OfficialConfirmed": 93
       },
       "4d": {
         "LegacyUnverified": 1525,
@@ -146147,12 +146147,12 @@
       "drawTime": "2PM",
       "combination": "9-4-1",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "8390e26a410f23522a3f5d6a"
+      "winners": 336,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "421ba36539be44404d642045"
     },
     {
       "gameId": "3d",
@@ -146160,12 +146160,12 @@
       "drawTime": "5PM",
       "combination": "1-0-5",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "c24309eb654700532d90dafd"
+      "winners": 964,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "e13ecd490f772a5a9ad2bedb"
     },
     {
       "gameId": "3d",
@@ -146173,12 +146173,12 @@
       "drawTime": "9PM",
       "combination": "6-1-4",
       "jackpotCentavos": null,
-      "winners": null,
-      "confirmation": "LegacyUnverified",
-      "sourceUrl": "https://github.com/keithjntlla/pcso-lotto-results/blob/main/data/results.json",
-      "provider": "Legacy shared feed",
-      "observedAt": "2026-11-21T06:40:55.057Z",
-      "revision": "83780df927d3ebe9c155aaea"
+      "winners": 845,
+      "confirmation": "OfficialConfirmed",
+      "sourceUrl": "https://www.pcso.gov.ph/searchlottoresult.aspx",
+      "provider": "PCSO",
+      "observedAt": "2026-11-26T07:29:53.700Z",
+      "revision": "70952d44a056329a072279f1"
     },
     {
       "gameId": "3d",
