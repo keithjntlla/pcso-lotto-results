@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-26T18:14:23.866Z",
+  "generatedAt": "2026-11-27T02:04:22.200Z",
   "coverage": {
     "historicalStart": "2016-01-01",
     "backfill": {
-      "nextDate": "2016-01-27",
-      "lastCheckedDate": "2016-01-26"
+      "nextDate": "2016-01-28",
+      "lastCheckedDate": "2016-01-27"
     },
     "lastRun": [
       {
         "start": "2026-11-21",
         "end": "2026-11-27",
         "kind": "recent",
-        "checkedAt": "2026-11-26T18:14:23.866Z",
+        "checkedAt": "2026-11-27T02:04:22.200Z",
         "status": "success",
         "drawCount": 54
       },
       {
-        "start": "2016-01-26",
-        "end": "2016-01-26",
+        "start": "2016-01-27",
+        "end": "2016-01-27",
         "kind": "backfill",
-        "checkedAt": "2026-11-26T18:14:23.866Z",
+        "checkedAt": "2026-11-27T02:04:22.200Z",
         "status": "success",
         "drawCount": 9
       },
@@ -44,9 +44,9 @@
         "OfficialConfirmed": 15
       },
       "645": {
-        "LegacyUnverified": 1588,
+        "LegacyUnverified": 1587,
         "Provisional": 0,
-        "OfficialConfirmed": 13
+        "OfficialConfirmed": 14
       },
       "649": {
         "LegacyUnverified": 1580,
@@ -54,9 +54,9 @@
         "OfficialConfirmed": 16
       },
       "655": {
-        "LegacyUnverified": 1587,
+        "LegacyUnverified": 1586,
         "Provisional": 0,
-        "OfficialConfirmed": 15
+        "OfficialConfirmed": 16
       },
       "658": {
         "LegacyUnverified": 1525,
@@ -64,19 +64,19 @@
         "OfficialConfirmed": 11
       },
       "3d": {
-        "LegacyUnverified": 11205,
+        "LegacyUnverified": 11202,
         "Provisional": 0,
-        "OfficialConfirmed": 102
+        "OfficialConfirmed": 105
       },
       "2d": {
-        "LegacyUnverified": 10978,
+        "LegacyUnverified": 10975,
         "Provisional": 0,
-        "OfficialConfirmed": 102
+        "OfficialConfirmed": 105
       },
       "4d": {
-        "LegacyUnverified": 1524,
+        "LegacyUnverified": 1523,
         "Provisional": 0,
-        "OfficialConfirmed": 13
+        "OfficialConfirmed": 14
       },
       "6d": {
         "LegacyUnverified": 1513,
