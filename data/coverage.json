@@ -1,10 +1,26 @@
 {
   "schemaVersion": 1,
   "backfill": {
-    "nextDate": "2016-01-29",
-    "lastCheckedDate": "2016-01-28"
+    "nextDate": "2016-01-30",
+    "lastCheckedDate": "2016-01-29"
   },
   "queries": [
+    {
+      "start": "2026-11-21",
+      "end": "2026-11-27",
+      "kind": "recent",
+      "checkedAt": "2026-11-27T15:56:22.457Z",
+      "status": "success",
+      "drawCount": 63
+    },
+    {
+      "start": "2016-01-29",
+      "end": "2016-01-29",
+      "kind": "backfill",
+      "checkedAt": "2026-11-27T15:56:22.457Z",
+      "status": "success",
+      "drawCount": 9
+    },
     {
       "start": "2026-11-21",
       "end": "2026-11-27",
@@ -696,21 +712,9 @@
       "checkedAt": "2026-11-21T06:43:16.383Z",
       "status": "success",
       "drawCount": 9
-    },
-    {
-      "provider": "https://lottobalita.com/3d-lotto/",
-      "date": "2026-11-21",
-      "status": "failed",
-      "error": "fetch failed"
-    },
-    {
-      "provider": "https://lottobalita.com/2d-lotto/",
-      "date": "2026-11-21",
-      "status": "failed",
-      "error": "fetch failed"
     }
   ],
-  "updatedAt": "2026-11-27T11:53:34.690Z",
+  "updatedAt": "2026-11-27T15:56:22.457Z",
   "unavailableRanges": [
     {
       "start": "2016-01-01",
