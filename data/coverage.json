@@ -1,10 +1,26 @@
 {
   "schemaVersion": 1,
   "backfill": {
-    "nextDate": "2016-02-02",
-    "lastCheckedDate": "2016-02-01"
+    "nextDate": "2016-02-03",
+    "lastCheckedDate": "2016-02-02"
   },
   "queries": [
+    {
+      "start": "2026-11-22",
+      "end": "2026-11-28",
+      "kind": "recent",
+      "checkedAt": "2026-11-28T14:52:25.654Z",
+      "status": "success",
+      "drawCount": 63
+    },
+    {
+      "start": "2016-02-02",
+      "end": "2016-02-02",
+      "kind": "backfill",
+      "checkedAt": "2026-11-28T14:52:25.654Z",
+      "status": "success",
+      "drawCount": 9
+    },
     {
       "start": "2026-11-22",
       "end": "2026-11-28",
@@ -696,25 +712,9 @@
       "date": "2026-11-22",
       "status": "success",
       "drawCount": 0
-    },
-    {
-      "start": "2026-11-15",
-      "end": "2026-11-21",
-      "kind": "recent",
-      "checkedAt": "2026-11-21T15:58:05.578Z",
-      "status": "unavailable",
-      "drawCount": 0
-    },
-    {
-      "start": "2016-01-06",
-      "end": "2016-01-06",
-      "kind": "backfill",
-      "checkedAt": "2026-11-21T15:58:05.578Z",
-      "status": "unavailable",
-      "drawCount": 0
     }
   ],
-  "updatedAt": "2026-11-28T12:47:32.142Z",
+  "updatedAt": "2026-11-28T14:52:25.654Z",
   "unavailableRanges": [
     {
       "start": "2016-01-01",
